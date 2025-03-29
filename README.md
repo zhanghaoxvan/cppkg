@@ -15,6 +15,7 @@ make
 
 ## Usage
 - `cppkg install <package>` to install a package.
+- `cppkg install --local <local package file>` to install a local package
 - `cppkg remove <package>` to remove a package.
 - `cppkg list` to list all installed packages.
 - `cppkg search <package>` to search a package.
