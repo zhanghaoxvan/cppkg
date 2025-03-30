@@ -1,16 +1,11 @@
 .PHONY: all clean help
-all: main
 
 # Use <filesystem> from C++17
-main: ./src/main.cpp
-	@echo "Compiling..."
+all: ./src/main.cpp
 	@mkdir -p ./bin
 	@g++ ./src/main.cpp -o ./bin/cppkg -std=c++17
-	@echo "Done."
 clean:
-	@echo "Cleaning..."
 	@rm -f ./bin/cppkg
-	@echo "Done."
 
 help:
 	@echo "Usage: make [target]"

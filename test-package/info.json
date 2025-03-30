@@ -1,0 +1,11 @@
+{
+    "name": "test-package",
+    "author": "zhanghaoxvan",
+    "readme": "a first package of `cppkg`",
+    "headers": [
+        "./include/tmp.hpp"
+    ],
+    "executable": [
+        "./executable/tmp"
+    ]
+}
