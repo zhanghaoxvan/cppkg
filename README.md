@@ -1,4 +1,4 @@
-![Logo](logo.ico)
+![Logo](./logo.ico)
 
 # cppkg
 
