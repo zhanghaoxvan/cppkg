@@ -10,6 +10,9 @@ namespace cppkg::install {
         system(("mv " + package_name + " " + std::string(package_name.begin(), package_name.begin() + package_name.rfind(".")) + ".zip").c_str());
         // unzip file
         system((std::string(package_name.begin(), package_name.begin() + package_name.rfind(".")) + ".zip").c_str());
-        cppkg::info::info(package_name); // Show Information about this package
+        // copy the floder to ~/.cppkg
+        system(("cp -r " + std::string(package_name.begin(), package_name.begin() + package_name.rfind(".")) + " ~/.cppkg/").c_str());
+        // delete the zip file
+        system(("rm " + std::string(package_name.begin(), package_name.begin() + package_name.rfind(".")) + ".zip").c_str());
     }
 }
