@@ -1,11 +1,8 @@
 {
     "name": "test-package",
+    "version": "0.0.1",
     "author": "zhanghaoxvan",
-    "readme": "a first package of `cppkg`",
-    "headers": [
-        "./include/tmp.hpp"
-    ],
-    "executable": [
-        "./executable/tmp"
-    ]
+    "description": "a first package of `cppkg`",
+    "header-floder": [ ],
+    "executable-floder": [ ]
 }
