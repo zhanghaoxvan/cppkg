@@ -3,19 +3,19 @@
 # Install dependencies
 if [ ! -e "~/cppkginit" ]; then
     if [ $# -lt 1 ]; then # $ init.sh
-        echo "sh init.sh <System>"
-        echo "For example:"
-        echo "test@ubuntu:~$ sh init.sh ubuntu"
-        echo "Supported Systems:"
-        echo "    ubuntu"    # use `apt`
-        echo "    debian"    # use `apt`
-        echo "    centos"    # use `yum`
-        echo "    rhel"      # use `yum`
-        echo "    fedora"    # use `dnf`
-        echo "    arch"      # use `pacman`
-        echo "    manjaro"   # use `pacman`
-        echo "    opensuse"  # use `zypper`
-        echo "    alpine"    # use `apk`
+        printf "sh init.sh <System>"
+        printf "For example:"
+        printf "test@ubuntu:~$ sh init.sh ubuntu"
+        printf "Supported Systems:"
+        printf "    ubuntu"    # use `apt`
+        printf "    debian"    # use `apt`
+        printf "    centos"    # use `yum`
+        printf "    rhel"      # use `yum`
+        printf "    fedora"    # use `dnf`
+        printf "    arch"      # use `pacman`
+        printf "    manjaro"   # use `pacman`
+        printf "    opensuse"  # use `zypper`
+        printf "    alpine"    # use `apk`
         exit
     else
         package_manager=
@@ -39,14 +39,20 @@ if [ ! -e "~/cppkginit" ]; then
                 package_manager="apk"
                 ;;
             *)
-                echo "Unsupported system: $1"
-                echo "Input your package manager:"
+                printf "Unsupported system: $1"
+                printf "Input your package manager:"
                 read package_manager
                 ;;
         esac
-        sudo $package_manager install unzip # unzip package
+        printf "Install `unzip`..."
+        sudo $package_manager install unzip
+        if [ ! $? -eq 0 ]; then
+            exit $?
+        fi
+        printf "Install `git`..."
+        sudo $package_manager install git
         if [ $? -eq 0 ]; then
-            touch ~/.cppkginit
+            exit $?
         fi
     fi
 fi
