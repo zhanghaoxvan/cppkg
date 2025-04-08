@@ -3,11 +3,12 @@
 
 namespace cppkg::help {
     void show_icon() {
-        std::cout << "   ___   _ __    _ __   | | __   __ _ " << std::endl;
-        std::cout << "  / __| | '_ \\  | '_ \\  | |/ /  / _` |" << std::endl;
-        std::cout << " | (__  | |_) | | |_) | |   <  | (_| |" << std::endl;
-        std::cout << "  \\___| | .__/  | .__/  |_|\\_\\  \\__, |" << std::endl;
-        std::cout << "        |_|     |_|             |___/ " << std::endl;
+        std::cout << R"(                         _            )" << std::endl;
+        std::cout << R"(   ___   _ __    _ __   | | __   __ _ )" << std::endl;
+        std::cout << R"(  / __| | '_ \  | '_ \  | |/ /  / _` |)" << std::endl;
+        std::cout << R"( | (__  | |_) | | |_) | |   <  | (_| |)" << std::endl;
+        std::cout << R"(  \___| | .__/  | .__/  |_|\_\  \__, |)" << std::endl;
+        std::cout << R"(        |_|     |_|             |___/ )" << std::endl;
     }
     void help() {
         show_icon();
