@@ -1,4 +1,5 @@
 #include "../include/invoke-main.hpp"
+
 void cppkg::invoke_main(std::vector<std::string> args) {
     if (args.size() < 2) {
         cppkg::help::help();

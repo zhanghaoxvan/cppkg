@@ -1,4 +1,5 @@
 #include "../include/help.hpp"
+
 void cppkg::help::show_icon() {
     std::cout << R"(                         _            )" << std::endl;
     std::cout << R"(   ___   _ __    _ __   | | __   __ _ )" << std::endl;

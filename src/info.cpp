@@ -1,4 +1,5 @@
 #include "../include/info.hpp"
+
 void cppkg::info::info(const std::string& package_name) {
     system(("git archive --remote=https://github.com/cppkg-packages/" +
         package_name + ".git" + " --format=zip --output=" + package_name + ".zip").c_str());
