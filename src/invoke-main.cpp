@@ -15,9 +15,13 @@ void cppkg::invoke_main(std::vector<std::string> args) {
                 std::cerr << "Error: No local package file provided." << std::endl;
                 return;
             }
-            cppkg::install::install_local(args[3]);
+            for (int i = 3; i < args.size(); i++) {
+                cppkg::install::install_local(args[i]);
+            }
         } else {
-            cppkg::install::install_web(args[2]);
+            for (int i = 3; i < args.size(); i++) {
+                cppkg::install::install_web(args[i]);
+            }
         }
     } else if (args[1] == "remove") {
         // Implement remove functionality
