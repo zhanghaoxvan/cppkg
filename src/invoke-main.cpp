@@ -19,7 +19,7 @@ void cppkg::invoke_main(std::vector<std::string> args) {
                 cppkg::install::install_local(args[i]);
             }
         } else {
-            for (int i = 3; i < args.size(); i++) {
+            for (int i = 2; i < args.size(); i++) {
                 cppkg::install::install_web(args[i]);
             }
         }
@@ -33,6 +33,8 @@ void cppkg::invoke_main(std::vector<std::string> args) {
         cppkg::help::help();
     } else if (args[1] == "version") {
         // Implement version functionality
+    } else if (args[1] == "update") {
+        // Implement update functionality
     } else {
         std::cerr << "Error: Unknown command '" << args[1] << "'." << std::endl;
         std::cerr << "Use 'cppkg help' for a list of available commands." << std::endl;
