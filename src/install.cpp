@@ -8,7 +8,7 @@ void cppkg::install::install_local(const std::string &package_name) {
     // unzip file
     system(("unzip " + package + ".zip").c_str());
     // copy the floder to ~/.cppkg
-    system(("cp -r " + package + " " + getenv("HOME") + "/.cppkg/" + package).c_str());
+    system(("cp -rf " + package + " " + getenv("HOME") + "/.cppkg/" + package).c_str());
     // delete the zip file
     system(("rm " + package + ".zip").c_str());
     // delete the floder

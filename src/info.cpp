@@ -12,11 +12,10 @@ void cppkg::info::info(const std::string& package_name) {
     }
     nlohmann::json j;
     file >> j;
-    std::cout << "Package Name: " << j["name"] << std::endl;
-    std::cout << "Version: " << j["version"] << std::endl;
-    std::cout << "Description: " << j["description"] << std::endl;
-    std::cout << "Author: " << j["author"] << std::endl;
-    std::cout << "License: " << j["license"] << std::endl;
-    std::cout << "Header Floder: " << j["header-folder"] << std::endl;
-    std::cout << "executable Floder: " << j["executable-folder"] << std::endl;
+    std::cout << "Information of " << j["name"] << ":" << std::endl;
+    std::cout << "  Package Name: " << j["name"] << std::endl;
+    std::cout << "  Version: " << j["version"] << std::endl;
+    std::cout << "  Description: " << j["description"] << std::endl;
+    std::cout << "  Author: " << j["author"] << std::endl;
+    std::cout << "  License: " << j["license"] << std::endl;
 }

@@ -2,6 +2,7 @@
 #include "includes.hpp"
 #include "install.hpp"
 #include "help.hpp"
+#include "info.hpp"
 
 namespace fs = std::filesystem;
 namespace cppkg {

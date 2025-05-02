@@ -38,8 +38,10 @@ void cppkg::invoke_main(std::vector<std::string> args) {
         // Implement search functionality
     } else if (args[1] == "help") {
         cppkg::help::help();
-    } else if (args[1] == "version") {
-        // Implement version functionality
+    } else if (args[1] == "info") {
+        for (int i = 2; i < args.size(); i++) {
+            cppkg::info::info(args[i]);
+        }
     } else if (args[1] == "update") {
         // Implement update functionality
     } else {
