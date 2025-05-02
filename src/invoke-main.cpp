@@ -10,16 +10,23 @@ void cppkg::invoke_main(std::vector<std::string> args) {
             std::cerr << "Error: No package name provided." << std::endl;
             return;
         }
+        bool force = *(args.end() - 1) == "--force";
         if (args[2] == "--local") {
             if (args.size() < 4) {
                 std::cerr << "Error: No local package file provided." << std::endl;
                 return;
             }
             for (int i = 3; i < args.size(); i++) {
+                if (!force || !std::filesystem::exists(std::string(getenv("HOME")) + "/.cppkg")) {
+                    continue;
+                }
                 cppkg::install::install_local(args[i]);
             }
         } else {
             for (int i = 2; i < args.size(); i++) {
+                if (!force || !std::filesystem::exists(std::string(getenv("HOME")) + "/.cppkg")) {
+                    continue;
+                }
                 cppkg::install::install_web(args[i]);
             }
         }

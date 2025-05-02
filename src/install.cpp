@@ -8,11 +8,11 @@ void cppkg::install::install_local(const std::string &package_name) {
     // unzip file
     system(("unzip " + package + ".zip").c_str());
     // copy the floder to ~/.cppkg
-    system(("cp -r " + package + " ~/.cppkg/" + package).c_str());
+    system(("cp -r " + package + " " + getenv("HOME") + "/.cppkg/" + package).c_str());
     // delete the zip file
     system(("rm " + package + ".zip").c_str());
     // delete the floder
-    system(("rm -r" + package).c_str());
+    system(("rm -r " + package).c_str());
     // Create a symlink to the package at /usr/include
     cppkg::utils::symlink::link_headers(("~/.cppkg/" + package));
 }
