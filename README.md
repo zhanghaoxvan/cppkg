@@ -23,6 +23,7 @@ make
 - `cppkg list` to list all installed packages.
 - `cppkg search <package>` to search a package.
 - `cppkg help` to show help information.
+- `cppkg update` to update packages list
 
 Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
 
@@ -33,6 +34,7 @@ Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` w
 - [ ] `cppkg list`
 - [ ] `cppkg search <package>`
 - [x] `cppkg help`
+- [ ] `cppkg update`
 
 
 ## Contributing
