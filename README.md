@@ -23,7 +23,7 @@ make
 - `cppkg list` to list all installed packages.
 - `cppkg search <package>` to search a package on web.
 - `cppkg help` to show help information.
-- `cppkg update` to update packages list
+- `cppkg update` to update packages list from web.
 
 Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
 
