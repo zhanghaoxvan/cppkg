@@ -21,7 +21,7 @@ make
 - `cppkg info <packages>` to show information of a package.
 - `cppkg remove <packages>` to remove a package.
 - `cppkg list` to list all installed packages.
-- `cppkg search <package>` to search a package.
+- `cppkg search <package>` to search a package on web.
 - `cppkg help` to show help information.
 - `cppkg update` to update packages list
 
