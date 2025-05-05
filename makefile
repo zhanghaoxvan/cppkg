@@ -3,7 +3,7 @@
 # Use <filesystem> from C++17
 all: ./src/*.cpp
 	@mkdir -p ./bin
-	@g++ $? -o ./bin/cppkg -std=c++17
+	@g++ $^ -o ./bin/cppkg -std=c++17
 clean:
 	@rm -f ./bin/cppkg
 
