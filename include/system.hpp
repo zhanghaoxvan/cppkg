@@ -2,7 +2,7 @@
 
 #include "includes.hpp"
 
-namespace cppkg::utils::symlink {
+namespace cppkg::system {
     void link_headers(std::string headers_path);
     void link_executable(std::string executables_path);
 }
