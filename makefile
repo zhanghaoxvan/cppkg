@@ -13,9 +13,6 @@ help:
 	@echo "  clean    Remove the compiled files"
 	@echo "  help     Display this help message"
 install:
-	ifeq ($(OS), Windows_NT)
-# Windows
-		powershell .\init.ps1
-	else
-# Linux
-		bash -c .\init.sh
+	@mkdir -p ~/.cppkg
+	@cp ./bin/cppkg ~/.cppkg/cppkg
+	@sh init.sh

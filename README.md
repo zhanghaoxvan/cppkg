@@ -9,7 +9,7 @@ A simple package manager what can manage some packages what are developed for C/
 ```bash
 git clone https://github.com/zhanghaoxvan/cppkg.git
 cd cppkg
-make 
+make && make install
 ```
 - Download the binary from [Github](https://github.com/zhanghaoxvan/cppkg/releases).
 
