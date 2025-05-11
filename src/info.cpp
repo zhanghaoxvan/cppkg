@@ -1,8 +1,8 @@
 #include "../include/info.hpp"
 
 void cppkg::info::info(const std::string& package_name) {
-    system(("git archive --remote=https://github.com/cppkg-packages/" +
-        package_name + ".git" + " --format=zip --output=" + package_name + ".zip").c_str());
+    system(("git archive --remote=git@github.com:zhanghaoxvan/cppkg-packages.git HEAD:" +
+        package_name + " --format=zip --output=" + package_name + ".zip").c_str());
     system(("unzip " + package_name + ".zip").c_str());
     system(("rm " + package_name + ".zip").c_str());
     std::ifstream file(package_name + "/info.json");

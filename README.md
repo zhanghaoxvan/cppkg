@@ -5,20 +5,44 @@
 A simple package manager what can manage some packages what are developed for C/C++.
 
 ## Install
-- Use `git` to download the project and compile it.
+1. Use `git` to download the project.
 ```bash
 git clone https://github.com/zhanghaoxvan/cppkg.git
-cd cppkg
-make && make install
 ```
-- Download the binary from [Github](https://github.com/zhanghaoxvan/cppkg/releases).
-
+2. Enter the `cppkg` directory.
+```bash
+cd cppkg
+```
+3. Compile it.
+```bash
+make
+```
+4. Install `cppkg` in your computer.
+```bash
+make install
+```
 ## Usage
-- `cppkg install <packages>` to install a package.
-- - If you want to install packages by force(maybe because updates), input `cppkg install <packages> --force`.
-- `cppkg install --local <local package files>` to install a local package
-- - If you want to install packages by force too, input `cppkg install --local <local package files> --force`.
-- `cppkg info <packages>` to show information of a package.
+### Install a Package
+- If you want to install a package such as `test-pkg`, you can input this prompt and install it.
+```bash
+cppkg install test-pkg
+```
+- If you want to update a package(`test-pkg`), you need to add a `--force` option:
+```bash
+cppkg install test-pkg --force
+```
+- If you have a Package File(`test-pkg.cppkg`), you can install it like this.
+```bash
+cppkg install --local test-pkg.cppkg
+```
+- If you have a newer package file(`test-pkg.cppkg`) and want to update your package with it, add `--force`:
+```bash
+cppkg install --local test-pkg.cppkg --force
+```
+You can install more package at once.
+### Get Information of a Package
+If you want to 
+### Remove a Package
 - `cppkg remove <packages>` to remove a package.
 - `cppkg list` to list all installed packages.
 - `cppkg search <package>` to search a package on web.

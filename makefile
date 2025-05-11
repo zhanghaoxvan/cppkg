@@ -1,4 +1,4 @@
-.PHONY: all clean help install
+.PHONY: all clean help install remove
 
 # Use <filesystem> from C++17
 all: ./src/*.cpp
@@ -9,10 +9,13 @@ clean:
 help:
 	@echo "Usage: make [target]"
 	@echo "Targets:"
-	@echo "  all      Build the program"
-	@echo "  clean    Remove the compiled files"
+	@echo "  all      Build cppkg"
+	@echo "  clean    Remove ./bin/cppkg"
 	@echo "  help     Display this help message"
+	@echo "  install  Install cppkg in your computer"
 install:
 	@mkdir -p ~/.cppkg
 	@cp ./bin/cppkg ~/.cppkg/cppkg
 	@sh init.sh
+remove:
+	@sh uninstall.sh

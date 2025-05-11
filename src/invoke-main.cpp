@@ -43,7 +43,7 @@ void cppkg::invoke_main(std::vector<std::string> args) {
             cppkg::info::info(args[i]);
         }
     } else if (args[1] == "update") {
-        // Implement update functionality
+        cppkg::update::update_packages_list();
     } else {
         std::cerr << "Error: Unknown command '" << args[1] << "'." << std::endl;
         std::cerr << "Use 'cppkg help' for a list of available commands." << std::endl;
