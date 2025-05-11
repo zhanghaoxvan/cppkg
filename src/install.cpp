@@ -19,8 +19,8 @@ void cppkg::install::install_local(const std::string &package_name) {
 
 void cppkg::install::install_web(const std::string &package_name) {
     // Download Package File
-    // system(("git archive --remote=https://github.com/cppkg-packages/" +
-        // package_name + ".git" + " --format=zip --output=" + package_name + ".cppkg").c_str());
+    system(("git archive --remote=https://github.com/cppkg-packages/" +
+        package_name + ".git" + " --format=zip --output=" + package_name + ".cppkg").c_str());
     // Install Package
     install_local(package_name + ".cppkg");
 }
