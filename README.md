@@ -39,17 +39,56 @@ cppkg install --local test-pkg.cppkg
 ```bash
 cppkg install --local test-pkg.cppkg --force
 ```
-You can install more package at once.
+You can install more packages at once.
 ### Get Information of a Package
-If you want to 
-### Remove a Package
-- `cppkg remove <packages>` to remove a package.
-- `cppkg list` to list all installed packages.
-- `cppkg search <package>` to search a package on web.
-- `cppkg help` to show help information.
-- `cppkg update` to update packages list from web.
+- If you want to get Information of a package(`test-pkg`), use:
 
-Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
+  ```bash
+  cppkg info test-pkg
+  ```
+
+  
+
+### Remove a Package
+- If you want to remove a package(`test-pkg`), enter this:
+
+  ```bash
+  cppkg remove test-pkg
+  ```
+
+  You can remove more packages at once.
+
+### List Installed Packages
+
+- Use Like this:
+
+  ```bash
+  cppkg list
+  ```
+
+  
+
+### Search a Package on Web
+
+- Enter this(e.g. search `test-pkg`):
+
+  ```bash
+  cppkg search test-pkg
+  ```
+
+### Show Help
+- Use This:
+
+  ```bash
+  cppkg help
+  ```
+
+  
+
+  ### Update [`lists`](https://github.com/zhanghaoxvan/cppkg-packages/blob/main/lists)
+
+> [!NOTE]
+> Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
 
 ## Implementation
 - [x] `cppkg install <packages> [--force]`

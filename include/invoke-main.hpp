@@ -4,6 +4,7 @@
 #include "help.hpp"
 #include "info.hpp"
 #include "update.hpp"
+#include "list.hpp"
 
 namespace fs = std::filesystem;
 namespace cppkg {

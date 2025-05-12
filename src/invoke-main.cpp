@@ -31,7 +31,7 @@ void cppkg::invoke_main(std::vector<std::string> args) {
             }
         }
     } else if (args[1] == "remove") {
-        // Implement remove functionality
+        
     } else if (args[1] == "list") {
         // Implement list functionality
     } else if (args[1] == "search") {
