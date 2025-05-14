@@ -87,6 +87,14 @@ You can install more packages at once.
 
   ### Update [`lists`](https://github.com/zhanghaoxvan/cppkg-packages/blob/main/lists)
 
+  - Enter:
+
+    ```bash
+    cppkg update
+    ```
+
+    
+
 > [!NOTE]
 > Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
 
