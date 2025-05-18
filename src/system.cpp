@@ -1,10 +1,30 @@
 #include "../include/system.hpp"
 
-void cppkg::sys::link_headers(std::string headers_path) {
-    auto headers_floder = std::string(headers_path.begin() + headers_path.rfind('/'), headers_path.end());
-    std::system(("ln -s " + headers_path + " /usr/include/" + headers_floder).c_str());
-}
-void cppkg::sys::link_executable(std::string executables_path) {
-    auto executables_floder = std::string(executables_path.begin() + executables_path.rfind('/'), executables_path.end());
-    std::system(("ln -s" + executables_path + "/usr/bin/" + executables_floder).c_str());
-}
+namespace cppkg::sys {
+    void symlink(
+        const std::string& src_path,
+        const std::string& dest_path,
+        symlink_type type
+    ) {
+        try {
+            const std::filesystem::path src(src_path);
+            const std::filesystem::path dest(dest_path);
+
+            // Validate that the source path exists.
+            if (std::filesystem::exists(src)) {
+                throw std::runtime_error("Source path does not exist: " + src_path);
+            }
+
+            // Create the appropriate type of symlink.
+            if (type == symlink_type::DIRECTORY) {
+                std::filesystem::create_directory_symlink(src, dest);  // Directory symlink.
+            } else {
+                std::filesystem::create_symlink(src, dest);           // File symlink.
+            }
+
+        } catch (const std::filesystem::filesystem_error& e) {
+            // Wrap filesystem-specific errors in a runtime_error for consistent handling.
+            throw std::runtime_error("Failed to create symlink: " + std::string(e.what()));
+        }
+    }
+} // namespace cppkg::sys
