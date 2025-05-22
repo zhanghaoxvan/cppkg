@@ -5,6 +5,7 @@
 #include "info.hpp"
 #include "update.hpp"
 #include "list.hpp"
+#include "remove.hpp"
 
 namespace cppkg {
     // Function to invoke the main function of the given executable

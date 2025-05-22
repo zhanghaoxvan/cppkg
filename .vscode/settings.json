@@ -62,5 +62,12 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "filesystem": "cpp"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/zhanghaoxvan/cppkg/bin",
+            "binaryPath": "/home/zhanghaoxvan/cppkg/bin/cppkg",
+            "binaryArgs": []
+        }
+    ]
 }

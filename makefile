@@ -7,6 +7,7 @@ all: ./src/*.cpp
 clean:
 	@rm -f ./bin/cppkg
 help:
+	@echo -e "                         _            \n   ___   _ __    _ __   | | __   __ _ \n  / __| | '_ \  | '_ \  | |/ /  / _\` |\n | (__  | |_) | | |_) | |   <  | (_| |\n  \___| | .__/  | .__/  |_|\_\  \\__, |\n        |_|     |_|             |___/ "
 	@echo "Usage: make [target]"
 	@echo "Targets:"
 	@echo "  all      Build cppkg"
