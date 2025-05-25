@@ -1,53 +1,102 @@
 #include "../include/invoke-main.hpp"
 
-void cppkg::invoke_main(std::vector<std::string> args) {
-    if (args.size() < 2) {
-        cppkg::help::help();
-        return;
-    }
-    if (args[1] == "install") {
-        if (args.size() < 3) {
-            std::cerr << "Error: No package name provided." << std::endl;
+namespace cppkg {
+    void invoke_main(const std::vector<std::string>& args) {
+        // Show help if no arguments provided
+        if (args.empty()) {
+            cppkg::help::help();
             return;
         }
-        bool force = *(args.end() - 1) == "--force";
-        if (args[2] == "--local") {
-            if (args.size() < 4) {
-                std::cerr << "Error: No local package file provided." << std::endl;
-                return;
-            }
-            for (int i = 3; i < args.size(); i++) {
-                if (!force || !std::filesystem::exists(std::string(getenv("HOME")) + "/.cppkg")) {
-                    continue;
+
+        const std::string& command = args[0];
+        std::vector<std::string> cmd_args(args.begin() + 1, args.end());
+
+        try {
+            // Install command handler
+            if (command == "install") {
+                bool force = false;
+                auto force_it = std::find(cmd_args.begin(), cmd_args.end(), "--force");
+                
+                // Extract force flag if present
+                if (force_it != cmd_args.end()) {
+                    force = true;
+                    cmd_args.erase(force_it);
                 }
-                cppkg::install::install_local(args[i]);
-            }
-        } else {
-            for (int i = 2; i < args.size(); i++) {
-                if (!force || !std::filesystem::exists(std::string(getenv("HOME")) + "/.cppkg")) {
-                    continue;
+
+                if (cmd_args.empty()) {
+                    throw std::runtime_error("No package(s) specified for installation");
                 }
-                cppkg::install::install_web(args[i]);
+
+                // Local file installation
+                if (cmd_args[0] == "--local") {
+                    if (cmd_args.size() < 2) {
+                        throw std::runtime_error("No local package files specified");
+                    }
+                    
+                    for (size_t i = 1; i < cmd_args.size(); ++i) {
+                        // Check if the floder exists
+                        if (cppkg::sys::has_subdirectory(
+                                std::filesystem::path(std::getenv("HOME")) / ".cppkg",
+                                cmd_args[i]
+                            ) && !force) {
+                            std::cerr << "Package already exists: " << cmd_args[i] << std::endl;
+                            continue;
+                        }
+                        cppkg::install::install_local(cmd_args[i]);
+                    }
+                } else { // Remote package installation
+                    for (size_t i = 0; i < cmd_args.size(); ++i) {
+                        // Check if the floder exists
+                        if (cppkg::sys::has_subdirectory(
+                                std::filesystem::path(std::getenv("HOME")) / ".cppkg",
+                                cmd_args[i]
+                            ) && !force) {
+                            std::cerr << "Package already exists: " << cmd_args[i] << std::endl;
+                            continue;
+                        }
+                        cppkg::install::install_web(cmd_args[i]);
+                    }
+                }
+            } else if (command == "remove") { // Remove command handler
+                if (cmd_args.empty()) {
+                    throw std::runtime_error("No packages specified for removal");
+                }
+                
+                for (const auto& pkg : cmd_args) {
+                    cppkg::remove::remove(pkg);
+                }
+            } 
+            else if (command == "list") { // List installed packages
+                cppkg::list::list();
+            } else if (command == "search") {// Search packages
+                if (cmd_args.empty()) {
+                    throw std::runtime_error("No search terms provided");
+                }
+                // Implementation would go here...
+            } else if (command == "help") { // Show help
+                cppkg::help::help();
             }
+            
+            else if (command == "info") { // Show package info
+                if (cmd_args.empty()) {
+                    throw std::runtime_error("No packages specified for info query");
+                }
+                
+                for (const auto& pkg : cmd_args) {
+                    cppkg::info::info(pkg);
+                }
+            }
+            // Update package lists
+            else if (command == "update") {
+                cppkg::update::update_packages_list();
+            }
+            // Unknown command
+            else {
+                throw std::runtime_error("Unknown command: " + command);
+            }
+        } catch (const std::exception& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            std::cerr << "Use 'cppkg help' for usage information" << std::endl;
         }
-    } else if (args[1] == "remove") {
-        for (int i = 2; i < args.size(); i++) {
-            cppkg::remove::remove(args[i]);
-        }
-    } else if (args[1] == "list") {
-        // Implement list functionality
-    } else if (args[1] == "search") {
-        // Implement search functionality
-    } else if (args[1] == "help") {
-        cppkg::help::help();
-    } else if (args[1] == "info") {
-        for (int i = 2; i < args.size(); i++) {
-            cppkg::info::info(args[i]);
-        }
-    } else if (args[1] == "update") {
-        cppkg::update::update_packages_list();
-    } else {
-        std::cerr << "Error: Unknown command '" << args[1] << "'." << std::endl;
-        std::cerr << "Use 'cppkg help' for a list of available commands." << std::endl;
     }
-}
+} // namespace cppkg

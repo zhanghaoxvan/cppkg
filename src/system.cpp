@@ -27,4 +27,15 @@ namespace cppkg::sys {
             throw std::runtime_error("Failed to create symlink: " + std::string(e.what()));
         }
     }
+    bool has_subdirectory(
+        const std::filesystem::path& parent_dir,
+        const std::string& dir_name
+    ) {
+        for (const auto& entry : std::filesystem::directory_iterator(parent_dir)) {
+            if (entry.is_directory() && entry.path().filename() == dir_name) {
+                return true;
+            }
+        }
+        return false;
+    }
 } // namespace cppkg::sys
