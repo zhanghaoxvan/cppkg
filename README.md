@@ -95,36 +95,8 @@ You can install more packages at once.
 
     
 
-<div style="
-  position: relative;
-  padding: 12px 16px;
-  margin: 16px 0;
-  border: 1px solid #84d8ff;
-  border-radius: 6px;
-  background-color: #ddf4ff;
-  color: #0969da;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-">
-  <div style="
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 4px;
-    border-radius: 6px 0 0 6px;
-    background-color: #218bff;
-    content: '';
-  "></div>
-  <!-- Icon -->
-  <div style="font-weight: 600; margin-bottom: 4px; display: flex; align-items: center;">
-    <span style="margin-right: 8px;">ℹ️</span>
-    <span>Note</span>
-  </div>
-  <!-- Content -->
-  <p style="margin: 0;">Don't forget to add <code>cppkg</code> to your <code>PATH</code> environment variable and use <code>sudo</code> when you install or remove packages.</p>
-</div>
+> ![NOTE]
+> Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
 
 ## Implementation
 - [x] `cppkg install <packages> [--force]`
