@@ -9,7 +9,7 @@ namespace cppkg::search {
             cppkg::update::update_packages_list(); // Now, the latest `lists` file is available and
                                                    // stored in `~/.cppkg/lists/lists`
             const std::string lists_path =
-                std::string(std::filesystem::path(getenv("HOME")) / ".cppkg" / "lists" / "lists");
+                std::string((std::filesystem::path(getenv("HOME")) / ".cppkg" / "lists" / "lists").string());
             // Step 2: Open the lists file for reading
             std::ifstream lists_file(lists_path);
             if (!lists_file.is_open()) {
