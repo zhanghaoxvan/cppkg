@@ -10,7 +10,7 @@ namespace cppkg {
 
         const std::string& command = args[0];
         std::vector<std::string> cmd_args(args.begin() + 1, args.end());
-
+        
         try {
             // Install command handler
             if (command == "install") {
@@ -72,12 +72,12 @@ namespace cppkg {
                 if (cmd_args.empty()) {
                     throw std::runtime_error("No search terms provided");
                 }
-                // Implementation would go here...
+                for (const auto& term : cmd_args) {
+                    cppkg::search::search(term);
+                }
             } else if (command == "help") { // Show help
                 cppkg::help::help();
-            }
-            
-            else if (command == "info") { // Show package info
+            } else if (command == "info") { // Show package info
                 if (cmd_args.empty()) {
                     throw std::runtime_error("No packages specified for info query");
                 }
@@ -85,13 +85,9 @@ namespace cppkg {
                 for (const auto& pkg : cmd_args) {
                     cppkg::info::info(pkg);
                 }
-            }
-            // Update package lists
-            else if (command == "update") {
+            } else if (command == "update") { // Update package lists
                 cppkg::update::update_packages_list();
-            }
-            // Unknown command
-            else {
+            } else { // Unknown command
                 throw std::runtime_error("Unknown command: " + command);
             }
         } catch (const std::exception& e) {

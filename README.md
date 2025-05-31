@@ -7,7 +7,7 @@ A simple package manager what can manage some packages what are developed for C/
 ## Install
 1. Use `git` to download the project.
 ```bash
-git clone https://github.com/zhanghaoxvan/cppkg.git
+git clone --depth=1 https://github.com/zhanghaoxvan/cppkg.git
 ```
 2. Enter the `cppkg` directory.
 ```bash
@@ -95,15 +95,34 @@ You can install more packages at once.
 
     
 
-> ![NOTE]
-> Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
+<div style="
+  --light-bg:#ddf4ff; --light-border:#84d8ff; --light-text:#0969da; --light-bar:#218bff;
+  --dark-bg:#0c2d6b; --dark-border:#1c4a8a; --dark-text:#e6f0ff; --dark-bar:#3d8bf0;
+  position:relative;padding:12px 16px;margin:16px 0;border-radius:6px;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:14px;line-height:1.5;
+  border:1px solid var(--light-border);background:var(--light-bg);color:var(--light-text);
+  @media (prefers-color-scheme: dark) {
+    border-color:var(--dark-border);background:var(--dark-bg);color:var(--dark-text)
+  }
+">
+  <div style="
+    position:absolute;top:0;bottom:0;left:0;width:4px;border-radius:6px 0 0 6px;
+    background:var(--light-bar);
+    @media (prefers-color-scheme: dark) { background:var(--dark-bar) }
+  "></div>
+  <div style="font-weight:600;margin-bottom:4px;display:flex;align-items:center">
+    <span style="margin-right:8px">ℹ️</span><span>Note</span>
+  </div>
+  <p style="margin:0">Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.</p>
+</div>
 
 ## Implementation
 - [x] `cppkg install <packages> [--force]`
 - [x] `cppkg install --local <local package files> [--force]`
 - [x] `cppkg remove <packages>`
 - [x] `cppkg list`
-- [ ] `cppkg search <package>`
+- [x] `cppkg search <packages>`
 - [x] `cppkg help`
 - [x] `cppkg update`
 

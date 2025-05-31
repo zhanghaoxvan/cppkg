@@ -7,6 +7,7 @@
 #include "list.hpp"
 #include "remove.hpp"
 #include "system.hpp"
+#include "search.hpp"
 
 namespace cppkg {
     /**
@@ -27,5 +28,5 @@ namespace cppkg {
      * 
      * - help
      */
-    void invoke_main(std::vector<std::string> args);
+    void invoke_main(const std::vector<std::string>& args);
 }
