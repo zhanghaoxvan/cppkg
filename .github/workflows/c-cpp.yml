@@ -8,9 +8,10 @@ on:
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
 
     steps:
-    - name: make
-      run: make
+      - uses: actions/checkout@v3
+      - name: Build
+        run: make -j$(nproc)
