@@ -5,6 +5,13 @@
 A simple package manager what can manage some packages what are developed for C/C++.
 
 ## Install
+
+<div style="position:relative;padding:12px 16px;margin:16px 0;border:1px solid #84d8ff;border-radius:6px;background-color:#ddf4ff;color:#0969da;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5">
+  <div style="position:absolute;top:0;bottom:0;left:0;width:4px;border-radius:6px 0 0 6px;background-color:#218bff"></div>
+  <div style="font-weight:600;margin-bottom:4px;display:flex;align-items:center"><span style="margin-right:8px">ℹ️</span><span>Note</span></div>
+  <p style="margin:0">If you use <code>Windows</code>, Use <code>Git Bash(MSYS)</code> to compile the code to <code>Windows Binary Format</code>.</p>
+</div>
+
 1. Use `git` to download the project.
 ```bash
 git clone --depth=1 https://github.com/zhanghaoxvan/cppkg.git
@@ -95,26 +102,10 @@ You can install more packages at once.
 
     
 
-<div style="
-  --light-bg:#ddf4ff; --light-border:#84d8ff; --light-text:#0969da; --light-bar:#218bff;
-  --dark-bg:#0c2d6b; --dark-border:#1c4a8a; --dark-text:#e6f0ff; --dark-bar:#3d8bf0;
-  position:relative;padding:12px 16px;margin:16px 0;border-radius:6px;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-  font-size:14px;line-height:1.5;
-  border:1px solid var(--light-border);background:var(--light-bg);color:var(--light-text);
-  @media (prefers-color-scheme: dark) {
-    border-color:var(--dark-border);background:var(--dark-bg);color:var(--dark-text)
-  }
-">
-  <div style="
-    position:absolute;top:0;bottom:0;left:0;width:4px;border-radius:6px 0 0 6px;
-    background:var(--light-bar);
-    @media (prefers-color-scheme: dark) { background:var(--dark-bar) }
-  "></div>
-  <div style="font-weight:600;margin-bottom:4px;display:flex;align-items:center">
-    <span style="margin-right:8px">ℹ️</span><span>Note</span>
-  </div>
-  <p style="margin:0">Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.</p>
+<div style="position:relative;padding:12px 16px;margin:16px 0;border:1px solid #84d8ff;border-radius:6px;background-color:#ddf4ff;color:#0969da;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5">
+  <div style="position:absolute;top:0;bottom:0;left:0;width:4px;border-radius:6px 0 0 6px;background-color:#218bff"></div>
+  <div style="font-weight:600;margin-bottom:4px;display:flex;align-items:center"><span style="margin-right:8px">ℹ️</span><span>Note</span></div>
+  <p style="margin:0">Don't forget to add <code>cppkg</code> to your <code>PATH</code> environment variable and use <code>sudo</code> when you install or remove packages.</p>
 </div>
 
 ## Implementation
@@ -136,3 +127,6 @@ You can install more packages at once.
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+## Thanks
+- [Niels Lohmann](https://github.com/nlohmann) for his [JSON for Modern C++](https://github.com/nlohmann/json) Library.

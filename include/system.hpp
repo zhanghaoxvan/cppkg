@@ -49,6 +49,20 @@ namespace cppkg::sys {
      * @return `true` if the subdirectory exists, `false` otherwise.
      */
 
-    bool has_subdirectory(const std::filesystem::path& parent_dir, const std::string& dir_name);
+    bool has_subdirectory(
+        const std::filesystem::path& parent_dir,
+        const std::string& dir_name
+    );
+
+    /**
+     * @brief Unzip a file.
+     * 
+     * @param file The zip file.
+     * 
+     * @note Requires `unzip` support in Unix-like operating systems.
+     */
+    void unzip(
+        const std::string& file
+    );
     
 } // namespace cppkg::sys

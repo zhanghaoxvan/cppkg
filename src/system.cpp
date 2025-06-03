@@ -38,4 +38,19 @@ namespace cppkg::sys {
         }
         return false;
     }
+
+    void unzip(
+        const std::string& file
+    ) {
+        try {
+            std::string short_name = std::string(file.begin(), file.begin() + file.rfind('.'));
+#ifdef _WIN32
+    system((std::string("powershell Expand-Archive -Path ") + file + " -DestinationPath " + short_name).c_str());
+#else
+    system((std::string("unzip ") + file + " -d " + short_name).c_str());
+#endif
+        } catch (const std::exception& e) {
+            throw std::runtime_error("Failed to unzip package " + file + ": " + std::string(e.what()));
+        }
+    }
 } // namespace cppkg::sys

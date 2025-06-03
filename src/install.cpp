@@ -8,26 +8,34 @@ namespace cppkg::install {
         std::string package = std::string(package_name.begin(), package_name.begin() + package_name.rfind("."));
 
         // Step 1: Unzip the package file
-        if (system(("unzip " + package + ".cppkg").c_str())) {
-            throw std::runtime_error("Failed to unzip package: " + package_name);
+        try {
+            cppkg::sys::unzip(package_name);
+        } catch (const std::exception& e) {
+            throw;
         }
 
         // Step 2: Copy to ~/.cppkg/
-        std::string install_dir = std::string(getenv("HOME")) + "/.cppkg/" + package;
-        if (system(("cp -rf " + package + " " + install_dir).c_str())) {
-            throw std::runtime_error("Failed to copy package to ~/.cppkg");
+        std::filesystem::path install_dir = std::filesystem::path(getenv("HOME")) / ".cppkg/" / package;
+        try {
+            std::filesystem::copy_file(package, install_dir, std::filesystem::copy_options::overwrite_existing);
+        } catch (const std::exception& e) {
+            throw std::runtime_error("Failed to copy package to ~/.cppkg: " + std::string(e.what()));
         }
 
         // Step 3: Cleanup temporary files
-        if (system(("rm " + package + ".zip").c_str())) {
+        try {
+            std::filesystem::remove(package + ".zip");
+        } catch (const std::exception&) {
             std::cerr << "Warning: Failed to delete .zip file\n";
         }
-        if (system(("rm -r " + package).c_str())) {
+        try {
+            std::filesystem::remove_all(package);
+        } catch (const std::exception&) {
             std::cerr << "Warning: Failed to delete temporary directory\n";
         }
 
         // Step 4: Create symlink to /usr/include
-        std::string include_path = install_dir + "/include";
+        std::string include_path = (install_dir / "include").string();
         cppkg::sys::symlink(
             include_path,
             "/usr/include",

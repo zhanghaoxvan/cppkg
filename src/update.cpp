@@ -22,15 +22,37 @@ namespace cppkg::update {
 
             // 3. Extract the archive
             std::cout << "Extracting package lists...\n";
-            if (system("unzip -q lists.zip")) {  // -q for quiet mode
-                throw std::runtime_error("Failed to extract package lists");
+            try {
+                cppkg::sys::unzip("lists.zip");
+            } catch (const std::exception& e) {
+                throw;
             }
 
             // 4. Install to ~/.cppkg/lists
-            std::cout << "Updating local package lists...\n";
-            if (system(("mkdir -p " + cppkg_dir + " && cp -rf lists/lists " + lists_dir).c_str())) {
-                throw std::runtime_error("Failed to update local package lists");
+            try {
+                // Create directories recursively
+                std::filesystem::create_directories(cppkg_dir);
+                
+                // Copy the lists directory
+                std::filesystem::path source = "lists/lists";
+                std::filesystem::path destination = lists_dir;
+                
+                if (!std::filesystem::exists(source) || !std::filesystem::is_directory(source)) {
+                    throw std::runtime_error("Source directory 'lists/lists' does not exist or is not a directory");
+                }
+                
+                // Use copy_options to control the copy behavior
+                std::filesystem::copy_options options = std::filesystem::copy_options::recursive | 
+                                        std::filesystem::copy_options::overwrite_existing;
+                std::filesystem::copy(source, destination, options);
+            } catch (const std::filesystem::filesystem_error& e) {
+                throw std::runtime_error("Failed to update local package lists: " + 
+                                    std::string(e.what()));
+            } catch (const std::exception& e) {
+                throw std::runtime_error("Failed to update local package lists: " + 
+                                    std::string(e.what()));
             }
+            
 
             // 5. Cleanup
             std::filesystem::remove("lists.zip");
