@@ -23,7 +23,6 @@ else
     INSTALL_DIR := $(HOME_DIR)/.cppkg/bin
     LDFLAGS := -lstdc++fs
 endif
-
 # Compiler settings
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra
