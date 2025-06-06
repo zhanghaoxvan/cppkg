@@ -3,19 +3,26 @@
 namespace cppkg::info {
     void info(const std::string& package_name) {
         // Step 1: Download package metadata via Git
-        std::string git_cmd = "git archive --remote=git@github.com:zhanghaoxvan/cppkg-packages.git HEAD:" +
-                            package_name + " --format=zip --output=" + package_name + ".zip";
+        std::string git_cmd = "git archive --remote=git@github.com:zhanghaoxvan/cppkg-packages.git HEAD:" + package_name + " --format=zip --output=" + package_name + ".zip";
         if (system(git_cmd.c_str()) != 0) {
             throw std::runtime_error("Failed to download package metadata: " + package_name);
         }
 
         // Step 2: Extract the ZIP archive
-        if (system(("unzip " + package_name + ".zip").c_str()) != 0) {
-            throw std::runtime_error("Failed to extract package: " + package_name);
+        try {
+            cppkg::sys::unzip("unzip " + package_name + ".zip");
+        } catch (const std::exception& e) {
+            throw std::runtime_error("Failed to extract package: " + package_name + ": " + e.what());
         }
 
         // Step 3: Clean up the ZIP file (ignore errors)
-        system(("rm " + package_name + ".zip").c_str());
+        try {
+            std::filesystem::remove(package_name + ".zip");
+        } catch (const std::exception& e) {
+            ; // We don't need to focus on exceptions,
+              // but we have to write this try-catch block
+              // in case exceptions are passed out
+        }
 
         // Step 4: Parse and display info.json
         std::ifstream file(package_name + "/info.json");
@@ -28,7 +35,7 @@ namespace cppkg::info {
             file >> j;
 
             // Validate required fields
-            const std::vector<std::string> required_fields = {"name", "version", "description", "author", "license"};
+            const std::vector<std::string> required_fields = { "name", "version", "description", "author", "license" };
             for (const auto& field : required_fields) {
                 if (!j.contains(field)) {
                     throw std::runtime_error("Invalid info.json: missing field '" + field + "'");
@@ -47,6 +54,10 @@ namespace cppkg::info {
         }
 
         // Step 5: Clean up extracted directory (ignore errors)
-        system(("rm -r " + package_name).c_str());
+        try {
+            std::filesystem::remove_all(package_name);
+        } catch (const std::exception& e) {
+            ; // See the lines 22~24
+        }
     }
 } // namespace cppkg::info

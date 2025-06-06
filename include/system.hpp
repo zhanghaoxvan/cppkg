@@ -27,10 +27,13 @@ namespace cppkg::sys {
      * @param type      Type of symlink (file or directory). Defaults to `FILE`.
      * 
      * @throws std::runtime_error If:
+     * 
      * - `src_path` does not exist.
+     * 
      * - Filesystem operations fail (e.g., permission denied, invalid paths).
      * 
      * @note On Unix-like systems, `create_symlink` works for both files and directories,
+     * 
      *       but explicitly using `DIRECTORY` improves cross-platform compatibility.
      */
 
@@ -60,6 +63,8 @@ namespace cppkg::sys {
      * @param file The zip file.
      * 
      * @note Requires `unzip` support in Unix-like operating systems.
+     * 
+     * @throws std::runtime_error when extract file failed.
      */
     void unzip(
         const std::string& file

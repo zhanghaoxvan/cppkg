@@ -7,7 +7,7 @@ namespace cppkg::update {
         const std::string home_dir = getenv("HOME");
         const std::string cppkg_dir = home_dir + "/.cppkg";
         const std::string lists_dir = cppkg_dir + "/lists";
-
+        
         try {
             // 1. Ensure ~/.cppkg exists
             if (!std::filesystem::exists(cppkg_dir)) {

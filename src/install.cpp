@@ -45,8 +45,7 @@ namespace cppkg::install {
 
     void install_web(const std::string& package_name) {
         // Step 1: Download package via Git
-        std::string git_cmd = "git archive --remote=git@github.com:zhanghaoxvan/cppkg-packages.git HEAD:"
-                            + package_name + " --format=zip --output=" + package_name + ".cppkg";
+        std::string git_cmd = "git archive --remote=git@github.com:zhanghaoxvan/cppkg-packages.git HEAD:" + package_name + " --format=zip --output=" + package_name + ".cppkg";
         if (system(git_cmd.c_str())) {
             throw std::runtime_error("Failed to download package: " + package_name);
         }

@@ -1,6 +1,7 @@
 #pragma once
 #include "includes.hpp"
 #include "json.hpp"
+#include "system.hpp"
 
 namespace cppkg::info {
     /**
@@ -22,7 +23,7 @@ namespace cppkg::info {
      * 
      * - `info.json` is missing or invalid.
      * 
-     * @note Requires Git, `unzip`, and the `nlohmann/json` library(has included).
+     * @note Requires Git, `unzip`(in Unix-like operating systems), and the `nlohmann/json` library(has included).
      * @note Temporary files (`package_name.zip` and extracted dir) are cleaned up.
      */
     void info(const std::string& package_name);
