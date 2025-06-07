@@ -7,7 +7,7 @@ A simple package manager what can manage some packages what are developed for C/
 ## Install
 
 > [!NOTE]
-> If you use `Windows`, Use `Git Bash(MSYS)` because our `Makefile` will use `MSYS` to determine which operating system it is.
+> If you use `Windows`, Use `Git Bash(MSYS)` because our `makefile` will use `MSYS` to determine which operating system it is.
 
 1. Use `git` to download the project.
 ```bash
@@ -99,7 +99,8 @@ You can install more packages at once.
 
     
 > [!NOTE]
-> Don't forget to add cppkg to your PATH environment variable and use sudo when you install or remove packages.
+> Don't forget to add `cppkg` to your `PATH` environment variable and use `sudo` when you install or remove packages.
+> Please do as our `makefile` says.
 
 ## Implementation
 - [x] `cppkg install <packages> [--force]`
