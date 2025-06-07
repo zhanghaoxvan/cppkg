@@ -27,23 +27,23 @@ make install
 ```
 ## Usage
 ### Install a Package
-- If you want to install a package such as `test-pkg`, you can input this prompt and install it.
-```bash
-cppkg install test-pkg
-```
-- If you want to update a package(`test-pkg`), you need to add a `--force` option:
-```bash
-cppkg install test-pkg --force
-```
-- If you have a Package File(`test-pkg.cppkg`), you can install it like this.
-```bash
-cppkg install --local test-pkg.cppkg
-```
-- If you have a newer package file(`test-pkg.cppkg`) and want to update your package with it, add `--force`:
-```bash
-cppkg install --local test-pkg.cppkg --force
-```
-You can install more packages at once.
+  - If you want to install a package such as `test-pkg`, you can input this prompt and install it.
+    ```bash
+    cppkg install test-pkg
+    ```
+  - If you want to update a package(`test-pkg`), you need to add a `--force` option:
+    ```bash
+    cppkg install test-pkg --force
+    ```
+  - If you have a Package File(`test-pkg.cppkg`), you can install it like this.
+    ```bash
+    cppkg install --local test-pkg.cppkg
+    ```
+  - If you have a newer package file(`test-pkg.cppkg`) and want to update your package with it, add `--force`:
+    ```bash
+    cppkg install --local test-pkg.cppkg --force
+  ```
+  You can install more packages at once.
 ### Get Information of a Package
 - If you want to get Information of a package(`test-pkg`), use:
 
@@ -89,13 +89,13 @@ You can install more packages at once.
 
   
 
-  ### Update [`lists`](https://github.com/zhanghaoxvan/cppkg-packages/blob/main/lists)
+### Update [`lists`](https://github.com/zhanghaoxvan/cppkg-packages/blob/main/lists)
 
-  - Enter:
+- Enter:
 
-    ```bash
-    cppkg update
-    ```
+  ```bash
+  cppkg update
+  ```
 
     
 > [!NOTE]
