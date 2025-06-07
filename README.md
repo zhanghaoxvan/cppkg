@@ -42,7 +42,7 @@ make install
   - If you have a newer package file(`test-pkg.cppkg`) and want to update your package with it, add `--force`:
     ```bash
     cppkg install --local test-pkg.cppkg --force
-  ```
+    ```
   You can install more packages at once.
 ### Get Information of a Package
 - If you want to get Information of a package(`test-pkg`), use:
